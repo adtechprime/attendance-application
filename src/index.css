@@ -17,51 +17,66 @@
     @apply antialiased min-h-screen transition-colors duration-200;
     touch-action: manipulation;
   }
+}
 
-  /* Light Theme (Default: Crisp White & Blue) */
-  body.theme-light {
-    @apply bg-slate-100 text-slate-900;
-  }
+/* Light Theme (Default: Crisp White & Blue) */
+body.theme-light {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
 
-  /* Dark Theme (Crisp Slate & Royal Blue) */
-  body.theme-dark {
-    @apply bg-slate-950 text-slate-100;
-  }
+/* Dark Theme (Crisp Slate & Royal Blue) */
+body.theme-dark {
+  background-color: #020617;
+  color: #f8fafc;
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 /* ─────────────────────────────────────────────────────────────
-   WHITE & BLUE SOLID DESIGN SYSTEM (NO MULTI-COLOR GRADIENTS)
+   WHITE & BLUE SOLID DESIGN SYSTEM (HIGH CONTRAST & LEGIBILITY)
 ───────────────────────────────────────────────────────────── */
 
-/* Light Mode Card & Panel Styles */
-.theme-light .app-panel {
+/* Light Mode Card, Panel & Contrast Text Styles */
+.theme-light .app-panel,
+.theme-light .glass-panel {
   background-color: #ffffff;
   border: 1px solid #cbd5e1;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  color: #0f172a;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
 }
 
-.theme-light .app-card {
+.theme-light .app-card,
+.theme-light .glass-card {
   background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
 }
 
 .theme-light .app-card-alt {
   background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
 }
 
-.theme-light .app-input {
+.theme-light .app-input,
+.theme-light .glass-input {
   background-color: #ffffff;
   border: 1.5px solid #cbd5e1;
   color: #0f172a;
 }
 
-.theme-light .app-input:focus {
+.theme-light .app-input::placeholder,
+.theme-light .glass-input::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.theme-light .app-input:focus,
+.theme-light .glass-input:focus {
   border-color: #2563eb;
   outline: none;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
@@ -72,33 +87,67 @@
   color: #ffffff;
 }
 
-/* Dark Mode Card & Panel Styles */
-.theme-dark .app-panel {
-  background-color: #0f172a;
-  border: 1px solid #1e293b;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+/* Light mode text contrast enhancements - ensures secondary text is always dark & legible */
+.theme-light .text-slate-400 {
+  color: #475569 !important;
 }
 
-.theme-dark .app-card {
+.theme-light .text-slate-500 {
+  color: #334155 !important;
+}
+
+.theme-light .text-slate-100 {
+  color: #0f172a !important;
+}
+
+.theme-light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+.theme-light .text-slate-300 {
+  color: #334155 !important;
+}
+
+/* Dark Mode Card, Panel & Contrast Text Styles */
+.theme-dark .app-panel,
+.theme-dark .glass-panel {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  color: #f8fafc;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+.theme-dark .app-card,
+.theme-dark .glass-card {
   background-color: #1e293b;
   border: 1px solid #334155;
+  color: #f8fafc;
 }
 
 .theme-dark .app-card-alt {
   background-color: #0f172a;
   border: 1px solid #1e293b;
+  color: #f8fafc;
 }
 
-.theme-dark .app-input {
+.theme-dark .app-input,
+.theme-dark .glass-input {
   background-color: #0f172a;
   border: 1.5px solid #334155;
   color: #f8fafc;
 }
 
-.theme-dark .app-input:focus {
+.theme-dark .app-input::placeholder,
+.theme-dark .glass-input::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+
+.theme-dark .app-input:focus,
+.theme-dark .glass-input:focus {
   border-color: #3b82f6;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
 
 .theme-dark .app-nav-active {

@@ -25,15 +25,15 @@ export const LabourTasks = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="glass-panel p-6 rounded-3xl border border-slate-800 flex items-center justify-between">
+      <div className="app-panel p-6 rounded-3xl flex items-center justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <CheckSquare className="w-6 h-6 text-sky-400" />
-            <h2 className="text-2xl font-extrabold text-slate-100 tracking-tight">
+            <CheckSquare className="w-6 h-6 text-blue-600 dark:text-sky-400" />
+            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
               My Assigned Daily Tasks
             </h2>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
             Review site assignments given by Javed Contractor and submit work completion updates.
           </p>
         </div>
@@ -42,46 +42,46 @@ export const LabourTasks = () => {
       {/* Task Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {myTasks.length === 0 ? (
-          <div className="col-span-full glass-card p-8 rounded-2xl text-center text-slate-500 text-xs">
+          <div className="col-span-full app-card p-8 rounded-2xl text-center text-slate-500 dark:text-slate-400 text-xs">
             No active tasks assigned to you right now.
           </div>
         ) : (
           myTasks.map((t) => (
-            <div key={t.id} className="glass-card p-5 rounded-2xl border border-slate-800 space-y-3 flex flex-col justify-between">
+            <div key={t.id} className="app-card p-5 rounded-2xl space-y-3 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
                   <span
                     className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                      t.priority === "high" ? "bg-rose-500/20 text-rose-400" : "bg-amber-500/20 text-amber-300"
+                      t.priority === "high" ? "bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-400" : "bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300"
                     }`}
                   >
                     {t.priority} Priority
                   </span>
-                  <span className="text-[10px] font-mono text-amber-400">Due: {t.deadline}</span>
+                  <span className="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400">Due: {t.deadline}</span>
                 </div>
 
-                <h4 className="font-extrabold text-slate-100 text-base mt-2">{t.title}</h4>
-                <p className="text-xs text-slate-400 mt-1 leading-relaxed">{t.description}</p>
+                <h4 className="font-extrabold text-slate-900 dark:text-slate-100 text-base mt-2">{t.title}</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">{t.description}</p>
 
                 {t.progressNotes && (
-                  <div className="mt-3 p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
+                  <div className="mt-3 p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300">
                     <strong>My Update:</strong> {t.progressNotes}
                   </div>
                 )}
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
-                <span className="text-[11px] font-bold text-slate-400 uppercase">Status: {t.status}</span>
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase">Status: {t.status}</span>
                 {t.status !== "completed" ? (
                   <button
                     onClick={() => handleMarkComplete(t)}
-                    className="px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-500/20 transition-all"
+                    className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-600/20 transition-all cursor-pointer"
                   >
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Mark Complete</span>
                   </button>
                 ) : (
-                  <span className="text-xs font-bold text-emerald-400 flex items-center gap-1">
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                     <CheckCircle2 className="w-4 h-4" /> Completed
                   </span>
                 )}
