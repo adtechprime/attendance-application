@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-body);
+    @apply antialiased min-h-screen transition-colors duration-200;
+    touch-action: manipulation;
+  }
+
+  /* Light Theme (Default: Crisp White & Blue) */
+  body.theme-light {
+    @apply bg-slate-100 text-slate-900;
+  }
+
+  /* Dark Theme (Crisp Slate & Royal Blue) */
+  body.theme-dark {
+    @apply bg-slate-950 text-slate-100;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   WHITE & BLUE SOLID DESIGN SYSTEM (NO MULTI-COLOR GRADIENTS)
+───────────────────────────────────────────────────────────── */
+
+/* Light Mode Card & Panel Styles */
+.theme-light .app-panel {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.theme-light .app-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+.theme-light .app-card-alt {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.theme-light .app-input {
+  background-color: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #0f172a;
+}
+
+.theme-light .app-input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.theme-light .app-nav-active {
+  background-color: #1d4ed8;
+  color: #ffffff;
+}
+
+/* Dark Mode Card & Panel Styles */
+.theme-dark .app-panel {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.theme-dark .app-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.theme-dark .app-card-alt {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.theme-dark .app-input {
+  background-color: #0f172a;
+  border: 1.5px solid #334155;
+  color: #f8fafc;
+}
+
+.theme-dark .app-input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.theme-dark .app-nav-active {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Touch-friendly finger action buttons (min 48px height) */
+.btn-touch {
+  min-height: 48px;
+  touch-action: manipulation;
+}
+
+/* Custom Clean Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.theme-light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.theme-light ::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 9999px;
+}
+
+.theme-light ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+.theme-dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 9999px;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MODAL & FORM SCREEN-FITTING OPTIMIZATION
+───────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  overflow-y: auto;
+}
+
+@media (min-width: 640px) {
+  .modal-overlay {
+    padding: 1.25rem;
+  }
+}
+
+.modal-dialog {
+  width: 100%;
+  max-height: calc(100vh - 2rem);
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.5rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .modal-dialog {
+    max-height: calc(100vh - 3rem);
+  }
+}
+
+.modal-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+}
+
+.modal-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-footer {
+  flex-shrink: 0;
+  border-top-width: 1px;
+}
+
+/* High-Fidelity Print Rules for Corporate Receipts, Vouchers & Registers */
+@media print {
+  @page {
+    margin: 8mm;
+    size: auto;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide app shell, sidebar, headers, and control toolbars */
+  header,
+  aside,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset modal overlay during print so document prints directly */
+  .print-modal-backdrop {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .print-modal-container {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+  }
+
+  .print-isolate-container {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-document-box {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    background: white !important;
+    color: #0f172a !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .printable-area {
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+  }
+}
